@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-ene-2019 19:23:42 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Asistenciamedica" table="asistenciamedica" catalog="seguros" optimistic-lock="version">
+        <id name="idAsistenciaMedica" type="java.lang.Integer">
+            <column name="IdAsistenciaMedica" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="seguro" class="model.Seguro" fetch="select">
+            <column name="IdSeguro" />
+        </many-to-one>
+        <property name="breveDescripcion" type="string">
+            <column name="breveDescripcion" />
+        </property>
+        <property name="lugar" type="string">
+            <column name="lugar" />
+        </property>
+        <property name="explicacion" type="string">
+            <column name="explicacion" length="65535" />
+        </property>
+        
+        <property name="tipoAsistencia">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">model.enums.TipoAsistencia</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        
+        
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <property name="hora" type="time">
+            <column name="hora" length="16" />
+        </property>
+        <property name="importe" type="big_decimal">
+            <column name="importe" precision="10" />
+        </property>
+        <property name="idx" type="java.lang.Integer">
+            <column name="idx" />
+        </property>
+    </class>
+</hibernate-mapping>
